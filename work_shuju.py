@@ -23,6 +23,8 @@ def parse_data(data):
     citys=[];cums=[];deaths=[];
 
 
+
+
     for data in work:
         city = data.find("div",{'class':"prod tags"})
         if (city!=None):
