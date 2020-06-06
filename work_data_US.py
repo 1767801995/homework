@@ -77,7 +77,7 @@ def dataview(citys,cums):
 #网络爬虫
 if __name__=='__main__':
     print("开始爬取美国数据")
-    urls=['http://m.sinovision.net/newpneumonia.php']
+    url=['http://m.sinovision.net/newpneumonia.php']
     data=get_data(url)
     citys,cums,deaths=parse_data(data)
     dataview(citys, cums)

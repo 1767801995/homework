@@ -20,7 +20,6 @@ def get_data(url):
 
 #爬取数据
 def parse_data(resp):
-        print(resp.text)
         data=json.loads(resp.text)
         name=jsonpath.jsonpath(data, "$..name")
         confirm=jsonpath.jsonpath(data, "$..nowConfirm")
