@@ -1,58 +1,58 @@
 ﻿citys,cums,deaths
-New York,381264,30236
-New Jersey,163336,12049
-California,126196,4541
-Illinois,125915,5795
-Massachusetts,102557,7235
-Pennsylvania,78815,5898
-Texas,72548,1812
-Florida,61488,2660
+New York,382331,30280
+New Jersey,163893,12106
+California,128593,4607
+Illinois,126890,5864
+Massachusetts,103132,7289
+Pennsylvania,79505,5931
+Texas,74470,1833
+Florida,62758,2688
 Michigan,58525,5613
-Maryland,56770,2702
-Georgia,50621,2147
-Virginia,48532,1454
-Connecticut,43460,4038
-Ohio,37759,2357
-Indiana,36578,2258
+Maryland,57482,2740
+Georgia,51359,2174
+Virginia,49397,1461
+Connecticut,43818,4055
+Ohio,38112,2372
+Indiana,36997,2292
 Louisiana,36504,2506
-North Carolina,33296,1015
-Colorado,27641,1524
-Minnesota,26980,1159
-Tennessee,25664,408
-Arizona,24332,1015
-Washington,23868,1153
-Iowa,21094,589
-Wisconsin,20249,633
-Alabama,19073,672
-Mississippi,16769,803
+North Carolina,34719,1028
+Colorado,27881,1527
+Minnesota,27501,1181
+Tennessee,26177,417
+Arizona,25451,1043
+Washington,24228,1155
+Iowa,21438,598
+Wisconsin,20571,645
+Alabama,19709,685
+Mississippi,17039,811
+Nebraska,15572,187
 Rhode Island,15441,772
-Nebraska,15406,187
-Missouri,14572,805
+Missouri,14951,815
 South Carolina,12415,501
-Utah,11252,120
-Kentucky,10977,466
-Kansas,10306,232
-Delaware,9773,388
-Nevada,9309,436
-District of Columbia,9199,479
-New Mexico,8672,387
-Arkansas,8651,152
-Oklahoma,7003,345
-South Dakota,5277,64
-New Hampshire,4953,278
-Puerto Rico,4620,141
+Utah,11798,121
+Kentucky,11287,470
+Kansas,10361,233
+Delaware,9845,390
+Nevada,9491,437
+District of Columbia,9269,483
+Arkansas,9101,154
+New Mexico,8800,392
+Oklahoma,7059,347
+South Dakota,5367,65
+New Hampshire,5019,283
+Puerto Rico,4915,142
 Oregon,4570,161
-Idaho,3054,83
-North Dakota,2745,71
-Maine,2482,98
-West Virginia,2119,84
-Vermont,1027,55
-Wyoming,933,17
-Hawaii,664,17
-Montana,541,18
-Alaska,524,10
+Idaho,3111,83
+North Dakota,2816,72
+Maine,2524,98
+West Virginia,2136,84
+Vermont,1046,55
+Wyoming,939,17
+Hawaii,673,17
+Montana,540,18
+Alaska,536,10
 Guam,179,5
 US Virgin Islands,71,6
-Diamond Princess Cruise,49,0
 Grand Princess Cruise,103,3
-Others,38077,1730
+Diamond Princess Cruise,49,0
+Others,38314,1741
