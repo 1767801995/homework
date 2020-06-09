@@ -1,6 +1,7 @@
 import json
 import jsonpath
 import pandas as pd
+import pymysql as pymysql
 import requests
 from pyecharts import options as opts
 from pyecharts.charts import Map
@@ -47,7 +48,7 @@ def save_csv(name,confirm,confirm_all,dead,heal):
 
 #PyechartsMap 地图
 def plt_data(name,confirm_all):
-    data_list=zip(name,confirm_all)
+    data_list=list(zip(name,confirm_all))
     map = Map().add(series_name='累计确诊',
                   data_pair=data_list,
                   maptype="china",
@@ -62,7 +63,35 @@ def plt_data(name,confirm_all):
     print("中国数据可视化成功，文件名：中国疫情分布图.html、中国疫情柱状图.png")
 
 
-#数据存入xlsx
+#数据存入mysql
+def save_sql():
+    data=pd.read_csv('data_china.csv')
+    rows_nums=data.shape[0]
+    db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
+    cursor=db.cursor()
+    try:
+        cursor.execute("drop table if exists data_china")
+        cursor.execute("CREATE TABLE data_china("
+                       "name VARCHAR (100), "
+                       "confirm VARCHAR (100),"
+                       "confirm_all VARCHAR (100),"
+                       "dead VARCHAR (100),"
+                       "heal VARCHAR (200));")
+        for i in range(rows_nums):
+            sql = "INSERT INTO data_china(name, confirm,confirm_all,dead,heal) VALUES (%s,%s,%s,%s,%s);"
+            cursor.execute(sql, (
+                (str)(data.iloc[i, 0]), (str)(data.iloc[i, 1]), (str)(data.iloc[i, 2]), (str)(data.iloc[i, 3]),
+                (str)(data.iloc[i, 4])))
+        cursor.close()
+        db.commit()
+        print("中国数据保存已保存到mysql")
+    except:
+        db.rollback()
+        print("ERROR")
+        cursor.close()
+    finally:
+        cursor.close()
+
 
 
 if __name__=='__main__':
@@ -71,3 +100,4 @@ if __name__=='__main__':
     name,confirm,confirm_all,dead,heal=parse_data(resp)
     plt_data(name,confirm_all)
     save_csv(name,confirm,confirm_all,dead,heal)
+    save_sql()

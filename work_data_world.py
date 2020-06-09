@@ -1,3 +1,4 @@
+import pymysql
 import requests
 import json
 import jsonpath
@@ -45,6 +46,47 @@ def save_csv(name,confirm,confirm_all,dead,heal):
     result.to_csv("data_world.csv", encoding='utf_8_sig', index=None)
     print("world数据保存csv成功，文件名：data_world.csv")
 
+#数据存入mysql
+def save_sql():
+    data=pd.read_csv('data_china.csv')
+    rows_nums=data.shape[0]
+    db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
+    cursor=db.cursor()
+    try:
+        cursor.execute("drop table if exists data_world")
+        cursor.execute("CREATE TABLE data_world("
+                       "name VARCHAR (100), "
+                       "confirm VARCHAR (100),"
+                       "confirm_all VARCHAR (100),"
+                       "dead VARCHAR (100),"
+                       "heal VARCHAR (200));")
+        for i in range(rows_nums):
+            sql = "INSERT INTO data_world(name, confirm,confirm_all,dead,heal) VALUES (%s,%s,%s,%s,%s);"
+            cursor.execute(sql, (
+                (str)(data.iloc[i, 0]), (str)(data.iloc[i, 1]), (str)(data.iloc[i, 2]), (str)(data.iloc[i, 3]),
+                (str)(data.iloc[i, 4])))
+        cursor.close()
+        db.commit()
+        print("世界疫情数据保存已保存到mysql")
+    except:
+        db.rollback()
+        print("ERROR")
+        cursor.close()
+    finally:
+        cursor.close()
+
+#可视化
+def plt_data(name,confirm_all):
+    data_list=zip(name,confirm_all)
+    map = Map().add(series_name='世界疫情图',
+                  data_pair=data_list,
+                  maptype="world",
+                  is_map_symbol_show=False)
+    map.set_series_opts(label_opts=opts.LabelOpts(is_show=False))  # 关闭国家名称显示
+    map.set_global_opts(title_opts=opts.TitleOpts("世界疫情"),visualmap_opts=opts.VisualMapOpts(max_=70000, is_piecewise=True))  # 图例显示
+    map.render("世界疫情分布图.html")
+    print("世界数据可视化成功，文件名：世界疫情分布图.html")
+
 
 if __name__=='__main__':
     print("开始爬取world数据")
@@ -52,3 +94,5 @@ if __name__=='__main__':
     resp=get_data(url)
     name, confirm, confirm_all, heal, dead = parse_data(resp)
     save_csv(name, confirm, confirm_all, heal, dead)
+    plt_data(name,confirm_all)
+    save_sql()

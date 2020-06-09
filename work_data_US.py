@@ -1,3 +1,4 @@
+import pymysql
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -48,7 +49,7 @@ def parse_data(data):
     print("死亡:",deaths)
     return citys,cums,deaths
 
-#数据存储
+#数据存储到csv
 def save_data(citys,cums,deaths):
     result=pd.DataFrame()
     result['citys']=citys
@@ -56,6 +57,32 @@ def save_data(citys,cums,deaths):
     result['deaths']=deaths
     result.to_csv("data_US.csv",encoding='utf_8_sig',index=None)
     print("美国数据保存csv成功，文件名：data_US.csv")
+
+#数据存入mysql
+def save_sql():
+    data=pd.read_csv('data_US.csv')
+    rows_nums=data.shape[0]
+    db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
+    cursor=db.cursor()
+    try:
+        cursor.execute("drop table if exists data_us")
+        cursor.execute("CREATE TABLE data_us("
+                       "citys VARCHAR (100), "
+                       "cums VARCHAR (100),"
+                       "deaths VARCHAR (200));")
+        for i in range(rows_nums):
+            sql = "INSERT INTO data_us(citys, cums,deaths) VALUES (%s,%s,%s);"
+            cursor.execute(sql, (
+                (str)(data.iloc[i, 0]), (str)(data.iloc[i, 1]), (str)(data.iloc[i, 2])))
+        cursor.close()
+        db.commit()
+        print("美国数据保存已保存到mysql")
+    except:
+        db.rollback()
+        print("ERROR")
+        cursor.close()
+    finally:
+        cursor.close()
 
 #可视化
 def dataview(citys,cums):
@@ -82,3 +109,4 @@ if __name__=='__main__':
     citys,cums,deaths=parse_data(data)
     dataview(citys, cums)
     save_data(citys,cums,deaths)
+    save_sql()

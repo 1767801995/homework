@@ -24,7 +24,7 @@ def parse_data(resp):
     print(data)
     title = jsonpath.jsonpath(data, "$..title")
     print(title)
-    print("world 数据爬取成功！")
+    print("词云热点数据爬取成功！")
     return title
 
 def save_xlsx(title):

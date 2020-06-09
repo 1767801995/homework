@@ -1,58 +1,58 @@
 ﻿citys,cums,deaths
-New York,382331,30280
-New Jersey,163893,12106
-California,128593,4607
-Illinois,126890,5864
-Massachusetts,103132,7289
-Pennsylvania,79505,5931
-Texas,74470,1833
-Florida,62758,2688
-Michigan,58525,5613
-Maryland,57482,2740
-Georgia,51359,2174
-Virginia,49397,1461
-Connecticut,43818,4055
-Ohio,38112,2372
-Indiana,36997,2292
-Louisiana,36504,2506
-North Carolina,34719,1028
-Colorado,27881,1527
-Minnesota,27501,1181
-Tennessee,26177,417
-Arizona,25451,1043
-Washington,24228,1155
-Iowa,21438,598
-Wisconsin,20571,645
-Alabama,19709,685
-Mississippi,17039,811
-Nebraska,15572,187
-Rhode Island,15441,772
-Missouri,14951,815
-South Carolina,12415,501
-Utah,11798,121
-Kentucky,11287,470
-Kansas,10361,233
-Delaware,9845,390
-Nevada,9491,437
-District of Columbia,9269,483
-Arkansas,9101,154
-New Mexico,8800,392
-Oklahoma,7059,347
-South Dakota,5367,65
-New Hampshire,5019,283
-Puerto Rico,4915,142
-Oregon,4570,161
-Idaho,3111,83
-North Dakota,2816,72
-Maine,2524,98
-West Virginia,2136,84
-Vermont,1046,55
-Wyoming,939,17
-Hawaii,673,17
-Montana,540,18
-Alaska,536,10
+New York,383893,30417
+New Jersey,164497,12214
+California,133816,4658
+Illinois,128415,5924
+Massachusetts,103626,7353
+Pennsylvania,80339,5953
+Texas,76463,1848
+Florida,64904,2713
+Michigan,64701,5912
+Maryland,58404,2776
+Georgia,52497,2180
+Virginia,51251,1478
+Connecticut,44092,4084
+Louisiana,43050,2944
+Ohio,38838,2406
+Indiana,37623,2316
+North Carolina,36518,1041
+Minnesota,28224,1208
+Colorado,28201,1543
+Arizona,27678,1053
+Tennessee,27005,421
+Washington,24777,1162
+Iowa,22007,617
+Wisconsin,21038,646
+Alabama,20925,714
+Mississippi,17768,837
+Nebraska,15786,188
+Rhode Island,15642,799
+Missouri,15158,823
+South Carolina,14800,557
+Utah,12322,124
+Kentucky,11476,472
+Kansas,10544,236
+Delaware,9972,398
+Nevada,9816,442
+Arkansas,9740,155
+District of Columbia,9389,491
+New Mexico,9062,400
+Oklahoma,7205,348
+South Dakota,5471,65
+New Hampshire,5079,286
+Puerto Rico,5046,142
+Oregon,4922,164
+Idaho,3189,83
+North Dakota,2880,72
+Maine,2588,99
+West Virginia,2161,84
+Vermont,1075,55
+Wyoming,960,17
+Hawaii,676,17
+Alaska,563,10
+Montana,548,18
 Guam,179,5
 US Virgin Islands,71,6
-Grand Princess Cruise,103,3
 Diamond Princess Cruise,49,0
-Others,38314,1741
+Grand Princess Cruise,103,3
+Others,39635,1743
