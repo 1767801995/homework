@@ -32,7 +32,7 @@ def parse_data(resp):
 def save_csv(title):
     result=pd.DataFrame()
     result['热点']=title
-    result.to_csv("热点.csv", encoding='utf_8_sig',index=None)
+    result.to_csv("csv/热点.csv", encoding='utf_8_sig',index=None)
 
 #读取csv文件
 def read_wcd():

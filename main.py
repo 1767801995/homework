@@ -8,7 +8,7 @@ if __name__=='__main__':
     url_ch='https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=318268778643'
     url_us='http://m.sinovision.net/newpneumonia.php'
     url_wcd='https://api.dreamreader.qq.com/news/v1/province/news/list?province_code=hb&page_size=10'
-    input = input("请输入:'china' or 'world' or 'us' or 'wcd'-------")
+    input=input("请输入:'china' or 'world' or 'us' or 'wcd'\n")
     if input=='china':
         print("开始爬取china数据")
         url=url_ch
@@ -34,9 +34,11 @@ if __name__=='__main__':
         url=url_wcd
         resp = wcd.get_wcd(url)
         title = wcd.parse_data(resp)
-        wcd.save_xlsx(title)
+        wcd.save_csv(title)
         wordcloud = wcd.read_wcd()
         wcd.make_wcd(wordcloud)
+
+
 
 
 

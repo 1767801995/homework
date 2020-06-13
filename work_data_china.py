@@ -43,7 +43,7 @@ def save_csv(name,confirm,confirm_all,dead,heal):
     result['累计确诊']=confirm_all
     result['死亡']=dead
     result['治愈']=heal
-    result.to_csv("data_china.csv", encoding='utf_8_sig', index=None)
+    result.to_csv("csv/data_china.csv", encoding='utf_8_sig', index=None)
     print("中国数据保存csv成功，文件名：data_china.csv")
 
 #PyechartsMap 地图

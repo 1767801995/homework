@@ -55,7 +55,7 @@ def save_data(citys,cums,deaths):
     result['citys']=citys
     result['cums']=cums
     result['deaths']=deaths
-    result.to_csv("data_US.csv",encoding='utf_8_sig',index=None)
+    result.to_csv("csv/data_US.csv",encoding='utf_8_sig',index=None)
     print("美国数据保存csv成功，文件名：data_US.csv")
 
 #数据存入mysql
