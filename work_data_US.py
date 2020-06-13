@@ -85,10 +85,10 @@ def save_sql():
         cursor.close()
 
 #可视化
-def dataview(citys,cums):
+def plt_data(citys,cums):
     register_url("https://echarts-maps.github.io/echarts-countries-js/")
     data_list=zip(citys,cums)
-    map=Map().add(series_name='确诊人数',
+    map=Map(opts.InitOpts(width='1600px',height='600px')).add(series_name='确诊人数',
                   data_pair=data_list,
                   maptype="美国",
                   is_map_symbol_show=False,
@@ -97,7 +97,7 @@ def dataview(citys,cums):
     map.set_global_opts(title_opts=opts.TitleOpts("美国疫情"),
                         visualmap_opts=opts.VisualMapOpts(range_color=Faker.visual_color,max_=10000),
                         )
-    map.render("美国疫情分布图.html")
+    map.render("html/美国疫情分布图.html")
     print("美国数据可视化成功，文件名：美国疫情分布图.html")
 
 
@@ -107,6 +107,6 @@ if __name__=='__main__':
     url='http://m.sinovision.net/newpneumonia.php'
     data=get_data(url)
     citys,cums,deaths=parse_data(data)
-    dataview(citys, cums)
+    plt_data(citys, cums)
     save_data(citys,cums,deaths)
     save_sql()

@@ -49,17 +49,17 @@ def save_csv(name,confirm,confirm_all,dead,heal):
 #PyechartsMap 地图
 def plt_data(name,confirm_all):
     data_list=list(zip(name,confirm_all))
-    map = Map().add(series_name='累计确诊',
+    map = Map(opts.InitOpts(width='1600px',height='600px')).add(series_name='累计确诊',
                   data_pair=data_list,
                   maptype="china",
                   is_map_symbol_show=False)
     map.set_series_opts(label_opts=opts.LabelOpts(is_show=True))  # 关闭省份名称显示
     map.set_global_opts(title_opts=opts.TitleOpts("中国疫情"), visualmap_opts=opts.VisualMapOpts(range_color=Faker.visual_color,max_=1000) ) # 图例显示
-    map.render("中国疫情分布图.html")
+    map.render("html/中国疫情分布图.html")
     plt.rcParams['font.sans-serif'] = ['FangSong']
     plt.bar(range(len(confirm_all)), confirm_all, tick_label=name)
     plt.xticks(rotation=270)
-    plt.savefig("中国疫情柱状图")
+    plt.savefig("imgdata/中国疫情柱状图")
     print("中国数据可视化成功，文件名：中国疫情分布图.html、中国疫情柱状图.png")
 
 
