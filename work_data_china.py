@@ -26,7 +26,18 @@ def parse_data(resp):
         confirm=jsonpath.jsonpath(data,"$.data.areaTree[2].children[*].today.confirm")      #现有确诊
         confirm_all=jsonpath.jsonpath(data,"$.data.areaTree[2].children[*].total.confirm")  #累计确诊
         dead = jsonpath.jsonpath(data, "$.data.areaTree[2].children[*].total.dead")         #累计死亡
-        heal=jsonpath.jsonpath(data,"$.data.areaTree[2].children[*].total.heal")            #累计确诊
+        heal=jsonpath.jsonpath(data,"$.data.areaTree[2].children[*].total.heal")            #累计治愈
+        # 数据处理
+        for i in range(len(confirm)):
+            if confirm[i]==None:
+                confirm[i]=0
+            elif confirm_all[i]==None:
+                confirm_all[i]=0
+            elif dead[i]==None:
+                dead[i]==0
+            elif heal[i]==None:
+                heal[i]=0
+
         print("china 数据爬取成功！")
         print("name:",name)
         print("confirm:",confirm)
@@ -53,7 +64,7 @@ def plt_data(name,confirm_all):
                   data_pair=data_list,
                   maptype="china",
                   is_map_symbol_show=False)
-    map.set_series_opts(label_opts=opts.LabelOpts(is_show=True))  # 关闭省份名称显示
+    map.set_series_opts(label_opts=opts.LabelOpts(is_show=True))
     map.set_global_opts(title_opts=opts.TitleOpts("中国疫情"), visualmap_opts=opts.VisualMapOpts(range_color=Faker.visual_color,max_=1000) ) # 图例显示
     map.render("html/中国疫情分布图.html")
     plt.rcParams['font.sans-serif'] = ['FangSong']
@@ -65,7 +76,7 @@ def plt_data(name,confirm_all):
 
 #数据存入mysql
 def save_sql():
-    data=pd.read_csv('data_china.csv')
+    data=pd.read_csv('csv/data_china.csv')
     rows_nums=data.shape[0]
     db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
     cursor=db.cursor()

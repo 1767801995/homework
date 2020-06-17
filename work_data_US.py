@@ -42,7 +42,11 @@ def parse_data(data):
         if (death != None):
             death= death.find("span", {'class': "dead"}).get_text()
             deaths.append(death)
-
+        for i in range(len(citys)):
+            if cums[i]==None:
+                cums[i]=0
+            elif deaths[i]==None:
+                deaths[i]=0
     print("美国数据爬取成功")
     print("州名称:",citys)
     print("确诊:",cums)
@@ -60,7 +64,7 @@ def save_data(citys,cums,deaths):
 
 #数据存入mysql
 def save_sql():
-    data=pd.read_csv('data_US.csv')
+    data=pd.read_csv('csv/data_US.csv')
     rows_nums=data.shape[0]
     db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
     cursor=db.cursor()

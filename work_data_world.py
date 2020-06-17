@@ -6,12 +6,9 @@ import pandas as pd
 import requests
 from pyecharts import options as opts
 from pyecharts.charts import Map
-
-
-#请求数据
 from pyecharts.faker import Faker
 
-
+#请求数据
 def get_data(url):
     headers_value={'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36"}
     try:
@@ -30,6 +27,15 @@ def parse_data(resp):
         confirm_all = jsonpath.jsonpath(data, "$..confirm")
         dead = jsonpath.jsonpath(data, "$..dead")
         heal = jsonpath.jsonpath(data, "$..heal")
+        for i in range(len(confirm)):
+            if confirm[i] == None:
+                confirm[i] = 0
+            elif confirm_all[i] == None:
+                confirm_all[i] = 0
+            elif dead[i] == None:
+                dead[i] == 0
+            elif heal[i] == None:
+                heal[i] = 0
         print("world 数据爬取成功！")
         print("国家:", name)
         print("现存确诊:", confirm)
@@ -51,7 +57,7 @@ def save_csv(name,confirm,confirm_all,dead,heal):
 
 #数据存入mysql
 def save_sql():
-    data=pd.read_csv('data_world.csv')
+    data=pd.read_csv('csv/data_world.csv')
     rows_nums=data.shape[0]
     db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
     cursor=db.cursor()

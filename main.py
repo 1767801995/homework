@@ -27,7 +27,7 @@ if __name__=='__main__':
         url=url_us
         data = us.get_data(url)
         citys, cums, deaths = us.parse_data(data)
-        us.dataview(citys, cums)
+        us.plt_data(citys, cums)
         us.save_data(citys, cums, deaths)
     elif input=='wcd':
         print("开始爬取热点，并制作词云")
