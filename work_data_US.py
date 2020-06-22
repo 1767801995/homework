@@ -42,6 +42,7 @@ def parse_data(data):
         if (death != None):
             death= death.find("span", {'class': "dead"}).get_text()
             deaths.append(death)
+        #数据处理
         for i in range(len(citys)):
             if cums[i]==None:
                 cums[i]=0

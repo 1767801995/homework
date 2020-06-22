@@ -27,6 +27,7 @@ def parse_data(resp):
         confirm_all = jsonpath.jsonpath(data, "$..confirm")
         dead = jsonpath.jsonpath(data, "$..dead")
         heal = jsonpath.jsonpath(data, "$..heal")
+        #数据处理
         for i in range(len(confirm)):
             if confirm[i] == None:
                 confirm[i] = 0

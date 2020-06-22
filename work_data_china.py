@@ -37,7 +37,6 @@ def parse_data(resp):
                 dead[i]==0
             elif heal[i]==None:
                 heal[i]=0
-
         print("china 数据爬取成功！")
         print("name:",name)
         print("confirm:",confirm)
