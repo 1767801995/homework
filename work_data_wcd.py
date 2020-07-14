@@ -61,7 +61,7 @@ def make_wcd(wordcloud):
     plt.show()
 
 if __name__=='__main__':
-    url='https://api.dreamreader.qq.com/news/v1/province/news/list?province_code=hb&page_size=10'
+    url='https://api.dreamreader.qq.com/news/v1/province/news/list?province_code=bj&page_size=10'
     resp=get_wcd(url)
     title=parse_data(resp)
     save_csv(title)
