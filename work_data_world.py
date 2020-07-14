@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2020/7/9 20:58
+# @Author  : python_HongHu
+# @Email   : 464646939@qq.com
+# @File    : work_data_world.py
+# @Software: PyCharm
+
 import pymysql
 import requests
 import json
