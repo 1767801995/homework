@@ -11,8 +11,6 @@ import json
 import jsonpath
 import pandas as pd
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS
-from imageio import imread
 
 #请求词云数据
 def get_wcd(url):
@@ -47,18 +45,6 @@ def read_wcd():
     wordcloud=df['热点'].tolist()
     return wordcloud
 
-#制作词云
-def make_wcd(wordcloud):
-    word_list=[" ".join(jieba.cut(sentence)) for sentence in wordcloud]
-    new_text=' '.join(word_list)
-    pic_path='imgdata/1.jpg'
-    img_mask=imread(pic_path)
-
-    wordcloud = WordCloud(background_color="white", font_path='/home/shen/Downloads/font/msyh.ttc', mask=img_mask,
-                          stopwords=STOPWORDS).generate(new_text)
-    plt.imshow(wordcloud)
-    plt.axis("off")
-    plt.show()
 
 if __name__=='__main__':
     url='https://api.dreamreader.qq.com/news/v1/province/news/list?province_code=bj&page_size=10'
@@ -66,4 +52,3 @@ if __name__=='__main__':
     title=parse_data(resp)
     save_csv(title)
     wordcloud=read_wcd()
-    make_wcd(wordcloud)

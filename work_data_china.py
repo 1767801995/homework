@@ -84,7 +84,7 @@ def plt_data(name,confirm_all):
 def save_sql():
     data=pd.read_csv('csv/data_china.csv')
     rows_nums=data.shape[0]
-    db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
+    db=pymysql.connect(host='localhost',user='root',password='123456',db='android',charset='utf8')
     cursor=db.cursor()
     try:
         cursor.execute("drop table if exists data_china")
@@ -112,9 +112,9 @@ def save_sql():
 
 
 if __name__=='__main__':
-    url="https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=318268778643"
-    resp=get_data(url)
-    name,confirm,confirm_all,dead,heal=parse_data(resp)
-    plt_data(name,confirm_all)
-    save_csv(name,confirm,confirm_all,dead,heal)
+    # url="https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=318268778643"
+    # resp=get_data(url)
+    # name,confirm,confirm_all,dead,heal=parse_data(resp)
+    # plt_data(name,confirm_all)
+    # save_csv(name,confirm,confirm_all,dead,heal)
     save_sql()

@@ -30,7 +30,7 @@ def get_data(url):
 def parse_data(data):
     soup=BeautifulSoup(data.text,'lxml')
 
-    work=soup.find_all("div",{'class':"todaydata"})[2]
+    work=soup.find_all("div",class_="todaydata")[1]
     work=work.find_all("div")
     work=list(work)
     citys=[];cums=[];deaths=[];
@@ -74,7 +74,7 @@ def save_data(citys,cums,deaths):
 def save_sql():
     data=pd.read_csv('csv/data_US.csv')
     rows_nums=data.shape[0]
-    db=pymysql.connect(host='localhost',user='root',password='123456',db='python',charset='utf8')
+    db=pymysql.connect(host='localhost',user='root',password='123456',db='android',charset='utf8')
     cursor=db.cursor()
     try:
         cursor.execute("drop table if exists data_us")
@@ -96,21 +96,6 @@ def save_sql():
     finally:
         cursor.close()
 
-#可视化
-def plt_data(citys,cums):
-    register_url("https://echarts-maps.github.io/echarts-countries-js/")
-    data_list=zip(citys,cums)
-    map=Map(opts.InitOpts(width='1600px',height='600px')).add(series_name='确诊人数',
-                  data_pair=data_list,
-                  maptype="美国",
-                  is_map_symbol_show=False,
-                  )
-    map.set_series_opts(label_opts=opts.LabelOpts(is_show=False))  #关闭名称显示
-    map.set_global_opts(title_opts=opts.TitleOpts("美国疫情"),
-                        visualmap_opts=opts.VisualMapOpts(range_color=Faker.visual_color,max_=10000),
-                        )
-    map.render("html/美国疫情分布图.html")
-    print("美国数据可视化成功，文件名：美国疫情分布图.html")
 
 
 #网络爬虫
@@ -119,6 +104,5 @@ if __name__=='__main__':
     url='http://m.sinovision.net/newpneumonia.php'
     data=get_data(url)
     citys,cums,deaths=parse_data(data)
-    plt_data(citys, cums)
     save_data(citys,cums,deaths)
     save_sql()
